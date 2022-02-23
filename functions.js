@@ -27,7 +27,8 @@ Output:
 */
 
 export function addAllAges(customers) {
-    return true;
+    const sum = customers.reduce((acc, item) => acc + item.age, 0);
+    return sum;
 }
 
 /* 
