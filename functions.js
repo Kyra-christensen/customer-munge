@@ -4,7 +4,7 @@ Output:
 */
 
 export function greetUsers(customers) {
-    return true;
+    return customers.map(item => `Hello ${item.first_name} ${item.last_name}`);
 }
 
 /* 
@@ -27,7 +27,8 @@ Output:
 */
 
 export function addAllAges(customers) {
-    return true;
+    const sum = customers.reduce((acc, item) => acc + item.age, 0);
+    return sum;
 }
 
 /* 
@@ -36,7 +37,8 @@ Output:
 */
 
 export function getAverageCoolFactor(customers) {
-    return true;
+    const average = customers.reduce((acc, item) => acc + item.cool_factor / customers.length, 0);
+    return average;
 }
 
 /* 
@@ -50,7 +52,15 @@ Output:
 */
 
 export function getTotalOfEachGender(customers) {
-    return true;
+    const TotalofEach = customers.reduce((acc, customer) => {
+        if(acc[customer.gender]) {
+            acc[customer.gender]++;
+        } else {
+            acc[customer.gender] = 1;
+        }
+        return acc;
+    }, {});
+    return TotalofEach;
 }
 
 /* 
@@ -64,7 +74,17 @@ Output:
 */
 
 export function getGenderBreakdownOfFordOwners(customers) {
-    return true;
+    const fordOwner = customers.filter(customer => customer.car_make === 'Ford');
+
+    const genderOfOwner = fordOwner.reduce((acc, customer) => {
+        if(acc[customer.gender]) {
+            acc[customer.gender]++;
+        } else {
+            acc[customer.gender] = 1;
+        }
+        return acc;
+    }, {});
+    return genderOfOwner;
 }
 
 //////////////////////////////////////////////////////////
